@@ -19,6 +19,11 @@ public class NotificationRepository : INotificationRepository
         return await _dbContext.Notifications.FirstOrDefaultAsync(n => n.Id == id, cancellationToken);
     }
 
+    public async Task<Notification?> GetByIdempotencyKeyAsync(string idempotencyKey, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Notifications.FirstOrDefaultAsync(n => n.IdempotencyKey == idempotencyKey, cancellationToken);
+    }
+
     public async Task AddAsync(Notification notification, CancellationToken cancellationToken = default)
     {
         await _dbContext.Notifications.AddAsync(notification, cancellationToken);

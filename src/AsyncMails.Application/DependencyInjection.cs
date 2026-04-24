@@ -10,7 +10,7 @@ public static class DependencyInjection
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         // Register application services, use cases, validators, etc.
-        // Example: services.AddScoped<ISendNotificationUseCase, SendNotificationUseCase>();
+        services.AddScoped<AsyncMails.Application.Services.INotificationService, AsyncMails.Application.Services.NotificationService>();
 
         return services;
     }

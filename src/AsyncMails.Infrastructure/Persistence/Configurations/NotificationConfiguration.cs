@@ -19,7 +19,7 @@ public class NotificationConfiguration : IEntityTypeConfiguration<Notification>
 
         builder.Property(n => n.Status)
             .IsRequired()
-            .HasConversion<string>(); // Store enum as string
+            .HasConversion<string>();
 
         builder.Property(n => n.IdempotencyKey)
             .HasMaxLength(100);

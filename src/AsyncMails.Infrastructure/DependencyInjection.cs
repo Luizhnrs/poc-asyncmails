@@ -31,6 +31,9 @@ public static class DependencyInjection
 
         // Register repositories and external service clients here
         services.AddScoped<INotificationRepository, NotificationRepository>();
+        
+        // Register in-memory queue
+        services.AddSingleton<AsyncMails.Application.Interfaces.INotificationQueue, AsyncMails.Infrastructure.Services.NotificationQueue>();
 
         return services;
     }

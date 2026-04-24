@@ -1,4 +1,5 @@
 using AsyncMails.Application.DTOs;
+using AsyncMails.Application.Interfaces;
 using AsyncMails.Domain.Entities;
 using AsyncMails.Domain.Interfaces;
 
@@ -7,10 +8,14 @@ namespace AsyncMails.Application.Services;
 public class NotificationService : INotificationService
 {
     private readonly INotificationRepository _notificationRepository;
+    private readonly INotificationQueue _notificationQueue;
 
-    public NotificationService(INotificationRepository notificationRepository)
+    public NotificationService(
+        INotificationRepository notificationRepository,
+        INotificationQueue notificationQueue)
     {
         _notificationRepository = notificationRepository;
+        _notificationQueue = notificationQueue;
     }
 
     public async Task<Notification> ProcessCreateNotificationAsync(CreateNotificationRequest request, CancellationToken cancellationToken = default)
@@ -35,6 +40,9 @@ public class NotificationService : INotificationService
         };
 
         await _notificationRepository.AddAsync(notification, cancellationToken);
+
+        // Send to background queue for processing
+        await _notificationQueue.EnqueueAsync(notification, cancellationToken);
 
         return notification;
     }

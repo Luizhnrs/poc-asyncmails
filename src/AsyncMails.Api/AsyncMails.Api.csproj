@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AsyncMails.Application\AsyncMails.Application.csproj" />
     <ProjectReference Include="..\AsyncMails.Infrastructure\AsyncMails.Infrastructure.csproj" />
+    <ProjectReference Include="..\AsyncMails.Worker\AsyncMails.Worker.csproj" />
   </ItemGroup>
 
   <ItemGroup>

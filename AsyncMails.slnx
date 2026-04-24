@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AsyncMails.Api/AsyncMails.Api.csproj" />
+    <Project Path="src/AsyncMails.Application/AsyncMails.Application.csproj" />
+    <Project Path="src/AsyncMails.Domain/AsyncMails.Domain.csproj" />
+    <Project Path="src/AsyncMails.Infrastructure/AsyncMails.Infrastructure.csproj" />
+    <Project Path="src/AsyncMails.Worker/AsyncMails.Worker.csproj" />
+  </Folder>
+</Solution>

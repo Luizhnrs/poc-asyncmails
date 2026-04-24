@@ -1,3 +1,4 @@
+using AsyncMails.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AsyncMails.Infrastructure.Persistence;
@@ -13,11 +14,13 @@ public class AsyncMailsDbContext : DbContext
     {
     }
 
+    public DbSet<Notification> Notifications => Set<Notification>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Future: Apply entity configurations from this assembly
-        // modelBuilder.ApplyConfigurationsFromAssembly(typeof(AsyncMailsDbContext).Assembly);
+        // Apply entity configurations from this assembly
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AsyncMailsDbContext).Assembly);
     }
 }

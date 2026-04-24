@@ -1,4 +1,6 @@
+using AsyncMails.Domain.Interfaces;
 using AsyncMails.Infrastructure.Persistence;
+using AsyncMails.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +30,7 @@ public static class DependencyInjection
                 }));
 
         // Register repositories and external service clients here
-        // Example: services.AddScoped<INotificationRepository, NotificationRepository>();
+        services.AddScoped<INotificationRepository, NotificationRepository>();
 
         return services;
     }
